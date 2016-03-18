@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import models.Scart_Prod;
 
 import models.ShoppingCart;
 
@@ -38,17 +39,18 @@ public class ShopCtrl {
         emf.close();
     }
     
-//    public void viewCart(ShoppingCart cart)
-//    {
-//        for(int i = 0 ; i < shopCart.size();i++)
-//        {
-//            if(cart.getUser().getUserId() == shopCart.get(i).getCart().getUser().getUserId())
-//            {
-//                System.out.println(shopCart.get(i));
-//                System.out.println("Total price"+cart.getTotalPrice());
-//            }
-//            
-//        }
-//    }
+    public void printContents(models.Scart_Prod Scart , ShoppingCart cart)
+    {
+        ArrayList<Scart_Prod> cartSearch = new ArrayList<>();
+        for(int i = 0; i <cartSearch.size();i++)
+        {
+            if(cartSearch.get(i).getCart().getCartID()== cart.getCartID() )
+            {
+            System.out.println(Scart);
+            }
+        }
+    }
+    
+
     
 }

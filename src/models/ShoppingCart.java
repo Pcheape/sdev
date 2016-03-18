@@ -26,7 +26,7 @@ private int cartID;
 @OneToMany(cascade = ALL, mappedBy="cart")
 private List<Scart_Prod> scart_cartList;
 
-
+ 
     private double totalPrice;
 
 
@@ -38,7 +38,7 @@ private List<Scart_Prod> scart_cartList;
     public ShoppingCart(Users u1)
     {
         this.cartID = u1.getUserId();
-        this.totalPrice= 0;
+        this.totalPrice = 0.0;
     }
 
     public void setTotalPrice(double totalPrice) {
@@ -47,6 +47,14 @@ private List<Scart_Prod> scart_cartList;
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public int getCartID() {
+        return cartID;
+    }
+
+    public List<Scart_Prod> getScart_cartList() {
+        return scart_cartList;
     }
 
     

@@ -11,9 +11,10 @@ package controller;
  */
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws models.UserNameExists {
 
+       
         views.Menu.welcome();
-
+       
     }
 }

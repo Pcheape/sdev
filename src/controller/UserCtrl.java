@@ -68,11 +68,14 @@ public class UserCtrl {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         models.Customer c1 = new models.Customer(userName, password, name, address);
-//       models.ShoppingCart cart1 = new models.ShoppingCart(c1);
-//        scart.add(cart1);
         users.add(c1);
         em.persist(c1);
-//        em.persist(cart1);
+        models.ShoppingCart cart1 = new models.ShoppingCart(c1);
+        scart.add(cart1);
+        
+        
+        
+        em.persist(cart1);
         em.getTransaction().commit();
         emf.close();
 

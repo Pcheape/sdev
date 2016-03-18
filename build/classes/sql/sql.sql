@@ -35,6 +35,7 @@ CREATE TABLE USERS (
 create Table CART
 (
 cartID number primary key,
+totalPrice number ,
 foreign key(cartID) references USERS(userID)
 );
 

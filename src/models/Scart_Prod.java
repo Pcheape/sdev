@@ -38,7 +38,7 @@ public class Scart_Prod implements Serializable {
        public Scart_Prod( int pr_qty, Product product, ShoppingCart cart) {
         this.pr_qty = pr_qty;
         this.product = product;
-//        this.cart = cart;
+        this.cart = cart;
     }
     
     public int getsPr_id() {
@@ -68,12 +68,17 @@ public class Scart_Prod implements Serializable {
     }
 
     public void setCart(ShoppingCart cart) {
-//        this.cart = cart;
+        this.cart = cart;
     }
 
-//    public ShoppingCart getCart() {
-////        return cart;
-//    }
+    public ShoppingCart getCart() {
+        return cart;
+    }
+
+    @Override
+    public String toString() {
+        return "Shopping Cart {orderid "+sPr_id + "quantity=" + pr_qty + ", product= " + product.getDescr() +  '}';
+    }
     
     
     
