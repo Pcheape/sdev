@@ -15,7 +15,7 @@ public class ShopCtrl {
         
     }
     
-    public void addProduct(models.Product id,int qty)
+    public void addProduct(controller. ,int qty)
     {
         
     }

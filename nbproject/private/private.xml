@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file://COMPHOME/homedir$/x00123757/Desktop/ca/sdev/src/META-INF/persistence.xml</file>
+            <file>file://COMPHOME/homedir$/x00123757/Desktop/sdev%20ca/phill/sdev/src/models/Supplier.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/sql/sql.sql</file>
+            <file>file://COMPHOME/homedir$/x00123757/Desktop/sdev%20ca/phill/sdev/src/models/Scart_Prod.java</file>
+            <file>file://COMPHOME/homedir$/x00123757/Desktop/sdev%20ca/phill/sdev/src/models/ShoppingCart.java</file>
+            <file>file://COMPHOME/homedir$/x00123757/Desktop/sdev%20ca/phill/sdev/src/models/Product.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/META-INF/persistence.xml</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/controller/ProductCtrl.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/controller/ShopCtrl.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/controller/UserCtrl.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/controller/Test.java</file>
+            <file>file://COMPHOME/homedir$/X00123757/Desktop/sdev%20ca/phill/sdev/src/views/Menu.java</file>
         </group>
     </open-files>
 </project-private>

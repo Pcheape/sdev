@@ -30,7 +30,7 @@ public class UserCtrl {
         return (Collection<Users>) query.getResultList();
     }
 
-    public static void firstRun() {
+    public static void firstRun() throws UserNameExists {
        
         Users u1;
         Collection<Users> existingUsers;
