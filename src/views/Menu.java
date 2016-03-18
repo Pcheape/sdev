@@ -136,6 +136,8 @@ public class Menu {
                     in.nextLine();
 
                     switch (choice) {
+                        case 1:
+                            controller.ShopCtrl.printContents(u1.getUserId());
                         case 3:
                             logout();
                     }

@@ -31,7 +31,7 @@ public class ShopCtrl {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        //add product method goes here . 
+       
         models.Scart_Prod cart1 = new models.Scart_Prod(qty, product,cart );
        shopCart.add(cart1);
         em.persist(cart1);
@@ -39,14 +39,14 @@ public class ShopCtrl {
         emf.close();
     }
     
-    public void printContents(models.Scart_Prod Scart , ShoppingCart cart)
+    public static void printContents(int userId)
     {
         ArrayList<Scart_Prod> cartSearch = new ArrayList<>();
         for(int i = 0; i <cartSearch.size();i++)
         {
-            if(cartSearch.get(i).getCart().getCartID()== cart.getCartID() )
+            if(cartSearch.get(i).getCart().getCartID()== userId )
             {
-            System.out.println(Scart);
+            System.out.println(cartSearch.get(i));
             }
         }
     }
