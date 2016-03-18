@@ -17,18 +17,21 @@ import javax.persistence.*;
 public class ShoppingCart {
     
 
+    
 @Id
- @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartseq")
-    @SequenceGenerator(name = "cartseq", sequenceName = "cartseq", allocationSize = 1)
-private int cartId;
-@OneToOne
-@JoinColumn(name ="UserID")
-private int userID;
+@OneToOne(cascade = CascadeType.ALL, optional = false,  orphanRemoval = true)
+@PrimaryKeyJoinColumn
+private Users user;
 
 
 
-    public ShoppingCart(int userID) {
-        this.userID = userID;
+    public ShoppingCart() {
+        
+    }
+    
+    public ShoppingCart(Users u1)
+    {
+        this.user = u1;
     }
 
    

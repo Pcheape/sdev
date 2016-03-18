@@ -25,6 +25,7 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userseq")
     @SequenceGenerator(name = "userseq", sequenceName = "userseq", allocationSize = 1)
     private int UserId;
+    
     private String userName;
     private String password;
 //   private String type;

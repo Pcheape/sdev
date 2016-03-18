@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.*;
-import models.ShoppingCart;
+//import models.ShoppingCart;
 import models.Users;
 
 /**
@@ -68,10 +68,11 @@ public class UserCtrl {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         models.Customer c1 = new models.Customer(userName, password, name, address);
-        models.ShoppingCart cart1 = new models.ShoppingCart(c1.getUserId());
+       models.ShoppingCart cart1 = new models.ShoppingCart(c1);
         scart.add(cart1);
         users.add(c1);
         em.persist(c1);
+        em.persist(cart1);
         em.getTransaction().commit();
         emf.close();
 
@@ -105,9 +106,9 @@ public class UserCtrl {
         return  users;
     }
 
-    public static List<ShoppingCart> getScart() {
-        return scart;
-    }
+//    public static List<ShoppingCart> getScart() {
+//        return scart;
+//    }
     public static void printUsers(){
          Collection<Users> existingUsers;
         existingUsers = findAllUsers();
