@@ -23,7 +23,7 @@ public class Menu {
     public static void welcome() throws models.UserNameExists {
 
         if (firstRun) {
-            System.out.println("adding users");
+            
             try{
             controller.UserCtrl.firstRun();
             }catch(models.UserNameExists e){

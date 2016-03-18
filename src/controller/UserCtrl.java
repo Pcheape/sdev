@@ -49,7 +49,7 @@ public class UserCtrl {
         try{ 
        addAdmin("admin","admin");
        }catch(models.UserNameExists e){
-           System.out.println(e.getMessage());
+           
        }
       
        
