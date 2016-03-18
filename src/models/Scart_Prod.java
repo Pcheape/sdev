@@ -6,6 +6,8 @@ package model;
  */
 import java.io.Serializable;
 import javax.persistence.*;
+import static javax.persistence.CascadeType.ALL;
+import models.ShoppingCart;
 
 
 @Entity(name = "Scart_Prod")
@@ -21,7 +23,12 @@ public class Scart_Prod implements Serializable {
     @ManyToOne
     @JoinColumn(name="PR_ID")
     private Product product;
-
+    
+    @ManyToOne
+    @JoinColumn(name="cartID")
+    private models.ShoppingCart cart;
+    
+    
     public int getsPr_id() {
         return sPr_id;
     }
@@ -44,6 +51,10 @@ public class Scart_Prod implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public void setCart(ShoppingCart cart) {
+        this.cart = cart;
     }
     
     

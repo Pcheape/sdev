@@ -5,8 +5,10 @@
  */
 package models;
 
-import java.util.ArrayList;
+
+import java.util.List;
 import javax.persistence.*;
+import static javax.persistence.CascadeType.ALL;
 
 /**
  *
@@ -21,7 +23,11 @@ public class ShoppingCart {
 @Id
 @OneToOne(cascade = CascadeType.ALL, optional = false,  orphanRemoval = true)
 @PrimaryKeyJoinColumn
-private Users user;
+private models.Users user;
+
+    @OneToMany(cascade = ALL, mappedBy="CartID")
+    private List<model.Scart_Prod> cart;
+    private double totalPrice;
 
 
 
@@ -32,7 +38,26 @@ private Users user;
     public ShoppingCart(Users u1)
     {
         this.user = u1;
+        this.totalPrice= 0;
     }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    
+
+ 
+
+    public Users getUser() {
+        return user;
+    }
+
+    
 
    
 

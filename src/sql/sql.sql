@@ -1,4 +1,4 @@
-bn  /* 
+  /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,17 +7,21 @@ bn  /*
  * Author:  cytex
  * Created: 17-Mar-2016
  */
-drop table Users;
-drop table Cart;
+
+
 DROP TABLE Scart_Prod;
 DROP TABLE Prod_Supp;
-DROP TABLE ShopCart;
 DROP TABLE Product;
 DROP TABLE Supplier;
+drop table CART;
+drop table Users;
+
 
 drop sequence userseq;
-drop sequence cartSeq;
 
+create SEQUENCE userSeq
+start with 3
+INCREMENT BY 1 MAXVALUE 5000 CYCLE;
 
 CREATE TABLE USERS (
  userID number primary key,
@@ -28,11 +32,12 @@ CREATE TABLE USERS (
  address varchar2(255)
 
 );
-create Table Cart
-(
-cartID number primary key,
-foreign key(cartID) references USERS(userID)
-);
+-- create Table CART
+-- (
+-- cartID number primary key,
+-- foreign key(cartID) references USERS(userID)
+-- );
+
 CREATE TABLE Product (
     PR_ID INTEGER PRIMARY KEY,
     descr VARCHAR2(25),
@@ -42,11 +47,11 @@ CREATE TABLE Product (
 
 CREATE TABLE Scart_Prod (
     SPR_ID INTEGER,
-    SC_ID INTEGER,
+    cartID number,
     PR_ID INTEGER,
     QTY INTEGER ,
     PRIMARY KEY (SPR_ID),
-    FOREIGN KEY (SC_ID) REFERENCES ShopCart (SC_ID),
+    FOREIGN KEY (cartID) REFERENCES Cart (cartID),
     FOREIGN KEY (PR_ID) REFERENCES Product (PR_ID)
 );
 
@@ -64,10 +69,4 @@ CREATE TABLE Prod_Supp (
     FOREIGN KEY (PR_ID) REFERENCES Product (PR_ID),
     FOREIGN KEY (SUP_ID) REFERENCES Supplier (SUP_ID)
 );
-create SEQUENCE userSeq
-start with 3
-INCREMENT BY 1 MAXVALUE 5000 CYCLE;
 
-create SEQUENCE cartSeq
-start with 3
-INCREMENT BY 1 MAXVALUE 5000 CYCLE;
