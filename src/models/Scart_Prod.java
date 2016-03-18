@@ -62,6 +62,10 @@ public class Scart_Prod implements Serializable {
     public void setCart(ShoppingCart cart) {
         this.cart = cart;
     }
+
+    public ShoppingCart getCart() {
+        return cart;
+    }
     
     
     
