@@ -32,11 +32,11 @@ CREATE TABLE USERS (
  address varchar2(255)
 
 );
--- create Table CART
--- (
--- cartID number primary key,
--- foreign key(cartID) references USERS(userID)
--- );
+create Table CART
+(
+cartID number primary key,
+foreign key(cartID) references USERS(userID)
+);
 
 CREATE TABLE Product (
     PR_ID INTEGER PRIMARY KEY,

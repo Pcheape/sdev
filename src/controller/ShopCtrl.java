@@ -38,17 +38,17 @@ public class ShopCtrl {
         emf.close();
     }
     
-    public void viewCart(ShoppingCart cart)
-    {
-        for(int i = 0 ; i < shopCart.size();i++)
-        {
-            if(cart.getUser().getUserId() == shopCart.get(i).getCart().getUser().getUserId())
-            {
-                System.out.println(shopCart.get(i));
-                System.out.println("Total price"+cart.getTotalPrice());
-            }
-            
-        }
-    }
+//    public void viewCart(ShoppingCart cart)
+//    {
+//        for(int i = 0 ; i < shopCart.size();i++)
+//        {
+//            if(cart.getUser().getUserId() == shopCart.get(i).getCart().getUser().getUserId())
+//            {
+//                System.out.println(shopCart.get(i));
+//                System.out.println("Total price"+cart.getTotalPrice());
+//            }
+//            
+//        }
+//    }
     
 }

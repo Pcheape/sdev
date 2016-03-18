@@ -21,12 +21,12 @@ public class ShoppingCart {
 
     
 @Id
-@OneToOne(cascade = CascadeType.ALL, optional = false,  orphanRemoval = true)
-@PrimaryKeyJoinColumn
-private models.Users user;
+private int cartID;
 
-    @OneToMany(cascade = ALL, mappedBy="CartID")
-    private List<models.Scart_Prod> cart;
+@OneToMany(cascade = ALL, mappedBy="cart")
+private List<Scart_Prod> scart_cartList;
+
+
     private double totalPrice;
 
 
@@ -37,7 +37,7 @@ private models.Users user;
     
     public ShoppingCart(Users u1)
     {
-        this.user = u1;
+        this.cartID = u1.getUserId();
         this.totalPrice= 0;
     }
 
@@ -53,9 +53,7 @@ private models.Users user;
 
  
 
-    public Users getUser() {
-        return user;
-    }
+   
 
     
 

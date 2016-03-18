@@ -20,11 +20,15 @@ public class Menu {
     private static int choice;
     private static boolean firstRun = true;
 
-    public static void welcome() {
+    public static void welcome() throws models.UserNameExists {
 
         if (firstRun) {
             System.out.println("adding users");
+            try{
             controller.UserCtrl.firstRun();
+            }catch(models.UserNameExists e){
+                
+            }
             firstRun = false;
         }
 
