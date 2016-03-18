@@ -1,7 +1,7 @@
 
 package controller;
-import model.Product;
-import model.Scart_Prod;
+import models.Product;
+import models.Scart_Prod;
 
 
 
@@ -31,14 +31,14 @@ public class ProductCtrl {
         return (List<Product>) query.getResultList();
     }
 
-    public Scart_Prod createScart_Prod(int sPr_id) {
-        em.getTransaction().begin();
-        Scart_Prod sPr = new Scart_Prod();
-        sPr.setsPr_id(sPr_id);         
-        em.persist(sPr);
-        em.getTransaction().commit();
-        return sPr;
-    }
+//    public Scart_Prod createScart_Prod(int sPr_id) {
+//        em.getTransaction().begin();
+//        Scart_Prod sPr = new Scart_Prod();
+//        sPr.setsPr_id(sPr_id);         
+//        em.persist(sPr);
+//        em.getTransaction().commit();
+//        return sPr;
+//    }
 
     public void updateQty(int id, int newQty) {
 

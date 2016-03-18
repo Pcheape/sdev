@@ -26,7 +26,7 @@ public class ShoppingCart {
 private models.Users user;
 
     @OneToMany(cascade = ALL, mappedBy="CartID")
-    private List<model.Scart_Prod> cart;
+    private List<models.Scart_Prod> cart;
     private double totalPrice;
 
 

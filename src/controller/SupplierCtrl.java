@@ -1,6 +1,6 @@
 package controller;
-import model.Product;
-import model.Supplier;
+import models.Product;
+import models.Supplier;
 
 
 

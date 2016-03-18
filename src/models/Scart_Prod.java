@@ -1,4 +1,4 @@
-package model;
+package models;
 
 /**
  *
@@ -27,7 +27,11 @@ public class Scart_Prod implements Serializable {
     @ManyToOne
     @JoinColumn(name="cartID")
     private models.ShoppingCart cart;
-    
+       public Scart_Prod( int pr_qty, Product product, ShoppingCart cart) {
+        this.pr_qty = pr_qty;
+        this.product = product;
+        this.cart = cart;
+    }
     
     public int getsPr_id() {
         return sPr_id;
@@ -44,6 +48,8 @@ public class Scart_Prod implements Serializable {
     public void setPr_qty(int pr_qty) {
         this.pr_qty = pr_qty;
     }
+
+ 
 
     public Product getProduct() {
         return product;
