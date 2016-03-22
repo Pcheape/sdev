@@ -13,34 +13,32 @@ import models.ShoppingCart;
 @Entity(name = "Scart_Prod")
 public class Scart_Prod implements Serializable {
 
-    @Id
+   @Id
     @Column(name = "SPR_ID")
     private int sPr_id;
-    
+
     @Column(name = "PR_QTY")
     private int pr_qty;
-    
-    @ManyToOne
-    @JoinColumn(name="PR_ID")
+
+    //change OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PR_ID")
     private Product product;
-    
+
     @ManyToOne
-    @JoinColumn(name="cartID")
+    @JoinColumn(name = "cartID")
     private models.ShoppingCart cart;
-    
-    public Scart_Prod()
-    {
-        
+
+    public Scart_Prod() {
+
     }
-    
-    
-    
-       public Scart_Prod( int pr_qty, Product product, ShoppingCart cart) {
+
+    public Scart_Prod(int pr_qty, Product product, ShoppingCart cart) {
         this.pr_qty = pr_qty;
         this.product = product;
-        this.cart = cart;
+//        this.cart = cart;
     }
-    
+
     public int getsPr_id() {
         return sPr_id;
     }
@@ -57,8 +55,6 @@ public class Scart_Prod implements Serializable {
         this.pr_qty = pr_qty;
     }
 
- 
-
     public Product getProduct() {
         return product;
     }
@@ -74,13 +70,6 @@ public class Scart_Prod implements Serializable {
     public ShoppingCart getCart() {
         return cart;
     }
-
-    @Override
-    public String toString() {
-        return "Shopping Cart {orderid "+sPr_id + "quantity=" + pr_qty + ", product= " + product.getDescr() +  '}';
-    }
-    
-    
     
     
     

@@ -17,17 +17,17 @@ public class Supplier implements Serializable {
     @Column(name = "SUP_ID")
     private int sup_id;
 
-    @Column(name = "company")
+    @Column(name = "COMPANY")
     private String company;
 
-    @Column(name = "address")
+    @Column(name = "ADDRESS")
     private String address;
 
-    @Column(name = "phone")
+    @Column(name = "PHONE")
     private String phone;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Prod_Supp",
+    @JoinTable(name = "PROD_SUPP",
             joinColumns = @JoinColumn(name = "SUP_ID"),
             inverseJoinColumns = @JoinColumn(name = "PR_ID"))
     private List<Product> prodList = new ArrayList<>();
@@ -88,7 +88,4 @@ public class Supplier implements Serializable {
     }
     
     
-    
-    
-
 }

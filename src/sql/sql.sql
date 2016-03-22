@@ -9,6 +9,7 @@
  */
 
 
+
 DROP TABLE Scart_Prod;
 DROP TABLE Prod_Supp;
 DROP TABLE Product;
@@ -35,7 +36,6 @@ CREATE TABLE USERS (
 create Table CART
 (
 cartID number primary key,
-totalPrice number ,
 foreign key(cartID) references USERS(userID)
 );
 
@@ -43,7 +43,8 @@ CREATE TABLE Product (
     PR_ID INTEGER PRIMARY KEY,
     descr VARCHAR2(25),
     price DECIMAL(4,2),
-    shelfnum VARCHAR2(25)
+    shelfnum VARCHAR2(25),
+    qtyOnShelf INTEGER 
 );
 
 CREATE TABLE Scart_Prod (
