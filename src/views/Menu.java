@@ -8,7 +8,11 @@ package views;
 import controller.UserCtrl;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import models.Product;
+import models.Scart_Prod;
+import models.ShoppingCart;
 
 /**
  *
@@ -139,7 +143,7 @@ public class Menu {
                             controller.ShopCtrl.printContents(u1.getUserId());
                             break;
                         case 2:
-                            shopping();
+                            shopping(u1);
                             break;
                         case 3:
                             logout();
@@ -186,10 +190,19 @@ public class Menu {
         }
     }
 
-    public static void shopping() {
+    public static void shopping(models.Users u1) {
+        List<Product> products = new ArrayList();
+        List<ShoppingCart> cart = new ArrayList();
+        ShoppingCart userCart = null;
+        Product productToBuy = null;
+        int productID;
+        boolean productFound = false;
+        int quantity;
+        
         try {
             System.out.println("Press 1 to list all products");
-            System.out.println("press 2 to logout");
+            System.out.println("Press 2 to add product to cart");
+            System.out.println("press 3 to logout");
             choice = in.nextInt();
             in.nextLine();
             switch (choice) {
@@ -197,6 +210,48 @@ public class Menu {
                     controller.ProductCtrl.listAllShelfProduct();
                     break;
                 case 2:
+                    controller.ProductCtrl.listAllShelfProduct();
+                    System.out.println("Please enter product ID you would like to purchase");
+                    productID = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Please enter quantity");
+                    quantity = in.nextInt();
+                    
+                    
+                    products = controller.ProductCtrl.findAllProducts();
+                    cart = controller.ShopCtrl.findAllCarts();
+                    
+                    for(int i = 0; i <cart.size();i++)
+                    {
+                        if( u1.getUserId() == cart.get(i).getCartID())
+                        {
+                         userCart = cart.get(i);   
+                            System.out.println("cart found");
+                        }
+                      
+                    }
+                for(int i = 0 ; i < products.size();i++ )
+                {
+                    if(productID == products.get(i).getPr_id())
+                    {
+                        productToBuy = products.get(i);
+                        productFound = true;
+                        System.out.println("prod found");
+                    }
+                }
+                if(productFound == false)
+                {
+                    System.out.println("Sorry Product "+productID+" not Available please try again");   
+                }
+                else{
+                    System.out.println("adding prod to cart");
+                    controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
+                    System.out.println("Product added Please purchase at purchase menu thank you for your custom");
+                }
+                    
+                    
+                    
+                case 3:
                     logout();
             }
         } catch (InputMismatchException e) {

@@ -6,9 +6,11 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import models.Scart_Prod;
 
 import models.ShoppingCart;
@@ -26,7 +28,7 @@ public class ShopCtrl {
         
     }
     
-    public void addProductCart(models.Product product,int qty,ShoppingCart cart)
+    public static void addProductCart(models.Product product,int qty,ShoppingCart cart)
     {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
         EntityManager em = emf.createEntityManager();
@@ -37,6 +39,14 @@ public class ShopCtrl {
         em.persist(cart1);
         em.getTransaction().commit();
         emf.close();
+    }
+    
+      public static List<ShoppingCart> findAllCarts() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("SELECT e FROM ShoppingCart e");
+        
+        return (List<ShoppingCart>) query.getResultList();
     }
     
     public static void printContents(int userId)

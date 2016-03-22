@@ -32,7 +32,7 @@ public class ProductCtrl {
         }
     }
 
-    public List<Product> findAllProducts() {
+    public static List<Product> findAllProducts() {
         Query query = em.createQuery("SELECT p FROM Product p");
         return (List<Product>) query.getResultList();
     }

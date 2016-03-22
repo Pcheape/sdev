@@ -5,7 +5,6 @@
  */
 package models;
 
-
 import java.util.List;
 import javax.persistence.*;
 import static javax.persistence.CascadeType.ALL;
@@ -17,29 +16,26 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 @Table(name = "CART")
 public class ShoppingCart {
-    
 
-    
-@Id
-private int cartID;
+    @Id
+    private int cartID;
 
-@OneToMany(cascade = ALL, mappedBy="cart")
-private List<Scart_Prod> scart_cartList;
+    @OneToMany(cascade = ALL, mappedBy = "cart")
+    private List<Scart_Prod> scart_cartList;
 
- 
     private double totalPrice;
 
-
-
     public ShoppingCart() {
-        
+
     }
-    
-    public ShoppingCart(Users u1)
-    {
+
+    public ShoppingCart(Users u1) {
         this.cartID = u1.getUserId();
         this.totalPrice = 0.0;
+
     }
+
+  
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
@@ -57,15 +53,4 @@ private List<Scart_Prod> scart_cartList;
         return scart_cartList;
     }
 
-    
-
- 
-
-   
-
-    
-
-   
-
-    
 }
