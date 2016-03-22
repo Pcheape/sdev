@@ -147,16 +147,12 @@ public class Menu {
                                 System.out.println("Would you like to Buy the products yes or enter to continue shopping");
                                 purchase = in.nextLine().toUpperCase();
                             } while ((!purchase.equals("YES")));
-                            if(purchase.equals("YES"))
-                            {
+                            if (purchase.equals("YES")) {
                                 cartList = controller.ShopCtrl.getShopCart();
-                                for(int i = 0; i < cartList.size();i++)
-                                {
-                                    if(cartList.get(i).getCart().getCartID() == u1.getUserId())
-                                    {
-                                        if(controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty()))
-                                        {
-                                        controller.ShopCtrl.removeCart(cartList.get(i).getCart());
+                                for (int i = 0; i < cartList.size(); i++) {
+                                    if (cartList.get(i).getCart().getCartID() == u1.getUserId()) {
+                                        if (controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty())) {
+                                            controller.ShopCtrl.removeCart(cartList.get(i).getCart());
                                         }
                                     }
                                 }
@@ -182,7 +178,8 @@ public class Menu {
                     System.out.println("Press 1 to view all User accounts");
                     System.out.println("Press 2 to add a admin");
                     System.out.println("press 3 to manage products");
-                    System.out.println("Press 4 to logout");
+                    System.out.println("Press 4 to manage suppliers");
+                    System.out.println("Press 5 to logout");
                     choice = in.nextInt();
                     in.nextLine();
 
@@ -197,6 +194,8 @@ public class Menu {
                             manageProducts();
                             break;
                         case 4:
+                            manageSuppliers();
+                        case 5:
                             logout();
                             break;
 
@@ -341,6 +340,49 @@ public class Menu {
             in.nextLine();
         }
 
+    }
+
+    public static void manageSuppliers() {
+        try {
+            System.out.println("Press 1 to add a supplier");
+            System.out.println("Press 2 to remove a supplier");
+            System.out.println("Press 3 to go back");
+            choice = in.nextInt();
+            in.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addSupplier();
+                case 3:
+                    break;
+
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid option please try again");
+            choice = 0;
+            in.nextLine();
+        }
+    }
+
+    public static void addSupplier() {
+        int id;
+        String companyName;
+        String address;
+        String phone;
+        
+        System.out.println("Please enter suplier ID");
+        id = in.nextInt();
+        in.nextLine();
+        System.out.println("Please enter company name");
+        companyName = in.nextLine();
+        System.out.println("Please enter company address");
+        address = in.nextLine();
+        System.out.println("Please enter phone number");
+        phone = in.nextLine();
+        
+        
+        controller.SupplierCtrl.createSupplier(id, companyName, address, phone);
+        System.out.println("Supplier added");
     }
 
     public static void logout() {

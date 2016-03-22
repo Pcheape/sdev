@@ -11,12 +11,12 @@ import javax.persistence.*;
 
 public class SupplierCtrl {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
-    EntityManager em = emf.createEntityManager();
+   static EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+   static EntityManager em = emf.createEntityManager();
     
-    List<Supplier> supplierList = new ArrayList<>();
+   static List<Supplier> supplierList = new ArrayList<>();
 
-    public Supplier createSupplier(int sup_id, String company, String address, String phone) {
+    public static Supplier createSupplier(int sup_id, String company, String address, String phone) {
         em.getTransaction().begin();
         Supplier supp = new Supplier(sup_id, company, address, phone);
         supplierList.add(supp);
