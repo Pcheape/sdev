@@ -38,11 +38,16 @@ public class ShoppingCart {
   
 
     public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+        this.totalPrice += totalPrice;
     }
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+    
+    public void clearTotalPrice()
+    {
+        this.totalPrice = 0;
     }
 
     public int getCartID() {

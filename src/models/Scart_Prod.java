@@ -70,7 +70,7 @@ public class Scart_Prod implements Serializable {
     public ShoppingCart getCart() {
         return cart;
     }
-    
+   
     
     
 }

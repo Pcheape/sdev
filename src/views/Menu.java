@@ -22,7 +22,7 @@ public class Menu {
 
     private static Scanner in = new Scanner(System.in);
     private static int choice;
-    
+
     private static boolean firstRun = true;
 
     public static void welcome() throws models.UserNameExists {
@@ -127,7 +127,7 @@ public class Menu {
     }
 
     public static void orderMenu(models.Users u1) {
-
+        String purchase = "no";
         if (u1 instanceof models.Customer) {
             do {
                 try {
@@ -141,6 +141,16 @@ public class Menu {
                     switch (choice) {
                         case 1:
                             controller.ShopCtrl.printContents(u1.getUserId());
+
+                            do {
+                                System.out.println("Would you like to Buy the products yes or no");
+                                purchase = in.nextLine().toUpperCase();
+                            } while ((!purchase.equals("YES")) || (!purchase.equals("NO")));
+                            if(purchase.equals("YES"))
+                            {
+                                
+                            }
+
                             break;
                         case 2:
                             shopping(u1);
@@ -198,7 +208,7 @@ public class Menu {
         int productID;
         boolean productFound = false;
         int quantity;
-        
+
         try {
             System.out.println("Press 1 to list all products");
             System.out.println("Press 2 to add product to cart");
@@ -216,41 +226,33 @@ public class Menu {
                     in.nextLine();
                     System.out.println("Please enter quantity");
                     quantity = in.nextInt();
-                    
-                    
+
                     products = controller.ProductCtrl.findAllProducts();
                     cart = controller.ShopCtrl.findAllCarts();
-                    
-                    for(int i = 0; i <cart.size();i++)
-                    {
-                        if( u1.getUserId() == cart.get(i).getCartID())
-                        {
-                         userCart = cart.get(i);   
+
+                    for (int i = 0; i < cart.size(); i++) {
+                        if (u1.getUserId() == cart.get(i).getCartID()) {
+                            userCart = cart.get(i);
                             System.out.println("cart found");
                         }
-                      
+
                     }
-                for(int i = 0 ; i < products.size();i++ )
-                {
-                    if(productID == products.get(i).getPr_id())
-                    {
-                        productToBuy = products.get(i);
-                        productFound = true;
-                        System.out.println("prod found");
+                    for (int i = 0; i < products.size(); i++) {
+                        if (productID == products.get(i).getPr_id()) {
+                            productToBuy = products.get(i);
+                            productFound = true;
+                            System.out.println("prod found");
+                        }
                     }
-                }
-                if(productFound == false)
-                {
-                    System.out.println("Sorry Product "+productID+" not Available please try again");   
-                }
-                else{
-                    System.out.println("adding prod to cart");
-                    controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
-                    System.out.println("Product added Please purchase at purchase menu thank you for your custom");
-                }
-                    
-                    
-                    
+                    if (productFound == false) {
+                        System.out.println("Sorry Product " + productID + " not Available please try again");
+                    } else {
+                        System.out.println("adding prod to cart");
+                        controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
+                        controller.ShopCtrl.updateTotalPrice(userCart, (productToBuy.getPrice() * quantity));
+                        System.out.println("Product added Please purchase at purchase menu thank you for your custom");
+                    }
+
                 case 3:
                     logout();
             }
@@ -262,10 +264,10 @@ public class Menu {
     }
 
     public static void manageProducts() {
-       int pr_id;
-       String descr;
-       double price;
-       int qtyOnShelf;
+        int pr_id;
+        String descr;
+        double price;
+        int qtyOnShelf;
         try {
             System.out.println("press 1 to list all products");
             System.out.println("Press 2 to add a product");
@@ -302,13 +304,13 @@ public class Menu {
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
-                     System.out.println("Please enter quantity in stock");
+                    System.out.println("Please enter quantity in stock");
                     qtyOnShelf = in.nextInt();
-                    
+
                     controller.ProductCtrl.updateShelfQty(pr_id, qtyOnShelf);
-                    System.out.println("product : "+pr_id+" with quantity :"+qtyOnShelf+" thank you");
+                    System.out.println("product : " + pr_id + " with quantity :" + qtyOnShelf + " thank you");
                     break;
-                case 5: 
+                case 5:
                     controller.ProductCtrl.listAllShelfProduct();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
@@ -316,11 +318,11 @@ public class Menu {
                     System.out.println("Please enter product description");
                     descr = in.nextLine();
                     controller.ProductCtrl.updateProdDescr(pr_id, descr);
-                    System.out.println("product : "+pr_id+" with description :"+descr+" thank you");
+                    System.out.println("product : " + pr_id + " with description :" + descr + " thank you");
                     break;
                 case 6:
                     logout();
-                    
+
             }
         } catch (InputMismatchException e) {
             System.out.println("Invalid option please try again");
