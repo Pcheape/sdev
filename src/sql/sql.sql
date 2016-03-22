@@ -1,22 +1,10 @@
-  /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  cytex
- * Created: 17-Mar-2016
- */
-
-
-
 DROP TABLE Scart_Prod;
 DROP TABLE Prod_Supp;
-DROP TABLE Product;
 DROP TABLE Supplier;
 drop table CART;
 drop table Users;
-
+drop table product_product;
+DROP TABLE Product;
 
 drop sequence userseq;
 
@@ -52,7 +40,7 @@ CREATE TABLE Scart_Prod (
     SPR_ID INTEGER,
     cartID number,
     PR_ID INTEGER,
-    QTY INTEGER ,
+    pr_QTY INTEGER ,
     PRIMARY KEY (SPR_ID),
     FOREIGN KEY (cartID) REFERENCES Cart (cartID),
     FOREIGN KEY (PR_ID) REFERENCES Product (PR_ID)

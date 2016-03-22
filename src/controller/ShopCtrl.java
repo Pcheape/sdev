@@ -37,7 +37,7 @@ public class ShopCtrl {
         em.getTransaction().begin();
        
         models.Scart_Prod cart1 = new models.Scart_Prod(qty, product,cart );
-       shopCart.add(cart1);
+        shopCart.add(cart1);
         em.persist(cart1);
         em.getTransaction().commit();
         emf.close();

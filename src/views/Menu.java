@@ -99,7 +99,7 @@ public class Menu {
         }
     }
 
-    public static void login(ArrayList<models.Users> u1) {
+    public static void login(ArrayList<models.Users> u1) throws models.UserNameExists {
 
         String username;
         String password;
@@ -126,7 +126,7 @@ public class Menu {
 
     }
 
-    public static void orderMenu(models.Users u1) {
+    public static void orderMenu(models.Users u1) throws models.UserNameExists {
         String purchase = "no";
         List<Scart_Prod> cartList = new ArrayList<>();
         if (u1 instanceof models.Customer) {
@@ -163,7 +163,7 @@ public class Menu {
                             shopping(u1);
                             break;
                         case 3:
-                            logout();
+                            welcome();
                     }
                 } catch (InputMismatchException e) {
                     System.out.println("Invalid option please try again");
@@ -179,7 +179,7 @@ public class Menu {
                     System.out.println("Press 2 to add a admin");
                     System.out.println("press 3 to manage products");
                     System.out.println("Press 4 to manage suppliers");
-                    System.out.println("Press 5 to logout");
+                    System.out.println("Press 5 to go logout");
                     choice = in.nextInt();
                     in.nextLine();
 
@@ -196,7 +196,8 @@ public class Menu {
                         case 4:
                             manageSuppliers();
                         case 5:
-                            logout();
+                            
+                           welcome();
                             break;
 
                     }
@@ -259,12 +260,13 @@ public class Menu {
                     } else {
                         System.out.println("adding prod to cart");
                         controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
+                        System.out.println("product added");
                         controller.ShopCtrl.updateTotalPrice(userCart, (productToBuy.getPrice() * quantity));
                         System.out.println("Product added Please purchase at purchase menu thank you for your custom");
                     }
 
                 case 3:
-                    logout();
+                    break;
             }
         } catch (InputMismatchException e) {
             System.out.println("Invalid option please try again");
@@ -331,7 +333,7 @@ public class Menu {
                     System.out.println("product : " + pr_id + " with description :" + descr + " thank you");
                     break;
                 case 6:
-                    logout();
+                    break;
 
             }
         } catch (InputMismatchException e) {
