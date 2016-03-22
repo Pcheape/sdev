@@ -128,6 +128,7 @@ public class Menu {
 
     public static void orderMenu(models.Users u1) {
         String purchase = "no";
+        List<Scart_Prod> cartList = new ArrayList<>();
         if (u1 instanceof models.Customer) {
             do {
                 try {
@@ -143,12 +144,22 @@ public class Menu {
                             controller.ShopCtrl.printContents(u1.getUserId());
 
                             do {
-                                System.out.println("Would you like to Buy the products yes or no");
+                                System.out.println("Would you like to Buy the products yes or enter to continue shopping");
                                 purchase = in.nextLine().toUpperCase();
-                            } while ((!purchase.equals("YES")) || (!purchase.equals("NO")));
+                            } while ((!purchase.equals("YES")));
                             if(purchase.equals("YES"))
                             {
-                                
+                                cartList = controller.ShopCtrl.getShopCart();
+                                for(int i = 0; i < cartList.size();i++)
+                                {
+                                    if(cartList.get(i).getCart().getCartID() == u1.getUserId())
+                                    {
+                                        if(controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty()))
+                                        {
+                                        controller.ShopCtrl.removeCart(cartList.get(i).getCart());
+                                        }
+                                    }
+                                }
                             }
 
                             break;

@@ -21,7 +21,7 @@ public class ShoppingCart {
     private int cartID;
 
     @OneToMany(cascade = ALL, mappedBy = "cart")
-    private List<Scart_Prod> scart_cartList;
+    private static List<Scart_Prod> scart_cartList;
 
     private double totalPrice;
 
@@ -35,8 +35,6 @@ public class ShoppingCart {
 
     }
 
-  
-
     public void setTotalPrice(double totalPrice) {
         this.totalPrice += totalPrice;
     }
@@ -44,9 +42,8 @@ public class ShoppingCart {
     public double getTotalPrice() {
         return totalPrice;
     }
-    
-    public void clearTotalPrice()
-    {
+
+    public void clearTotalPrice() {
         this.totalPrice = 0;
     }
 
@@ -54,8 +51,16 @@ public class ShoppingCart {
         return cartID;
     }
 
-    public List<Scart_Prod> getScart_cartList() {
+    public static List<Scart_Prod> getScart_cartList() {
         return scart_cartList;
+    }
+
+    public void removeCart(ShoppingCart cart) {
+        for (int i = 0; i < scart_cartList.size(); i++) {
+            if (cart.getCartID() == scart_cartList.get(i).getCart().cartID) {
+                scart_cartList.remove(i);
+            }
+        }
     }
 
 }

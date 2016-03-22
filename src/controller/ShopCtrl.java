@@ -24,6 +24,8 @@ public class ShopCtrl {
     
    
     private static ArrayList<models.Scart_Prod> shopCart = new ArrayList<>();
+    
+    
     public ShopCtrl(){
         
     }
@@ -63,6 +65,22 @@ public class ShopCtrl {
             System.out.println(cartSearch.get(i));
             }
         }
+    }
+    
+    
+    public static void removeCart(ShoppingCart cart)
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        cart.removeCart(cart);
+        em.merge(cart);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public static ArrayList<Scart_Prod> getShopCart() {
+        return shopCart;
     }
     
 

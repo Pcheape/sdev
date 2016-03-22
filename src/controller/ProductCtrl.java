@@ -53,17 +53,20 @@ public class ProductCtrl {
 
     }
 
-    public void deductFromShelf(int pr_id, int qty) {
+    public static boolean deductFromShelf(int pr_id, int qty) {
+        boolean output = false;
         em.getTransaction().begin();
         Product p = em.find(Product.class, pr_id);
         if (p.getQtyOnShelf() > qty) {
             updateShelfQty(pr_id, (p.getQtyOnShelf() - qty));
             System.out.println("OK");
+            output = true;
 
         } else {
             System.out.println("Sorry, quantity on shelf is: " + p.getQtyOnShelf());
         }
         em.getTransaction().commit();
+        return output;
     }
 
     public void addToShelf(int pr_id, int qty) {
