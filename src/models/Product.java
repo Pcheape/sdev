@@ -29,8 +29,8 @@ public class Product implements Serializable {
     private double price;
 
     //change MAP
-    @MapKeyColumn(name = "SHELFNUM")
-    private Map<String, Product> shelfMap;
+//    @MapKeyColumn(name = "SHELFNUM")
+//    private Map<String, Product> shelfMap;
 
     @Column(name = "QTYONSHELF")
     private int qtyOnShelf;
@@ -48,29 +48,30 @@ public class Product implements Serializable {
 //        shelfMap = new HashMap<>();//*
     }
 
-    public Product(int pr_id, String descr, double price, int qtyOnShelf) {
+    public Product(int pr_id, String descr, double price, int qtyOnShelf, Supplier sup) {
 
 //        owner = new Scart_Prod();//product - scart_prod
-//        shelfMap = new HashMap<>();//*
+//       shelfMap = new HashMap<>();//*
 
         this.pr_id = pr_id;
         this.descr = descr;
         this.price = price;
         this.qtyOnShelf = qtyOnShelf;
+        this.supList.add(sup);
     }
     
     //**
 
-    public void putProductOnShelf(String shelfnum, Product p) {
-        shelfMap.put(shelfnum, p);
-    }
+//    public void putProductOnShelf(String shelfnum, Product p) {
+//        shelfMap.put(shelfnum, p);
+//    }
 
-    public void listProductShelf() {
-        for (Map.Entry<String, Product> entry : shelfMap.entrySet()) {
-            System.out.printf("Shelf : %s Product: %s %n",
-                    entry.getKey(), entry.getValue().getDescr());
-        }
-    }
+//    public void listProductShelf() {
+//        for (Map.Entry<String, Product> entry : shelfMap.entrySet()) {
+//            System.out.printf("Shelf : %s Product: %s %n",
+//                    entry.getKey(), entry.getValue().getDescr());
+//        }
+//    }
 
     public void addSupplier(Supplier s) {
         supList.add(s);

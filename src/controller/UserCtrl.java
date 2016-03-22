@@ -35,6 +35,9 @@ public class UserCtrl {
         Users u1;
         Collection<Users> existingUsers;
         existingUsers = findAllUsers();
+        
+       
+        
        
        
         
@@ -77,6 +80,7 @@ public class UserCtrl {
         
         em.persist(cart1);
         em.getTransaction().commit();
+        em.close();
         emf.close();
 
         System.out.println("UserCreated Successfully Please Log in");
@@ -101,6 +105,7 @@ public class UserCtrl {
         users.add(a1);
         em.persist(a1);
         em.getTransaction().commit();
+        em.close();
         emf.close();
     }
 

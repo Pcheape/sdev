@@ -32,14 +32,17 @@ public class ShopCtrl {
     
     public static void addProductCart(models.Product product,int qty,ShoppingCart cart)
     {
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-       
+        
         models.Scart_Prod cart1 = new models.Scart_Prod(qty, product,cart );
         shopCart.add(cart1);
         em.persist(cart1);
         em.getTransaction().commit();
+        System.out.println("commiting");
+        em.close();
         emf.close();
     }
     
@@ -64,6 +67,10 @@ public class ShopCtrl {
             {
             System.out.println(cartSearch.get(i));
             }
+            else 
+            {
+                System.out.println("Cart not found");
+            }
         }
     }
     
@@ -77,6 +84,7 @@ public class ShopCtrl {
         em.merge(cart);
         em.getTransaction().commit();
         em.close();
+        emf.close();
     }
 
     public static ArrayList<Scart_Prod> getShopCart() {

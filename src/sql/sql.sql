@@ -32,7 +32,7 @@ CREATE TABLE Product (
     PR_ID INTEGER PRIMARY KEY,
     descr VARCHAR2(25),
     price DECIMAL(4,2),
-    shelfnum VARCHAR2(25),
+--     shelfnum VARCHAR2(25),
     qtyOnShelf INTEGER 
 );
 

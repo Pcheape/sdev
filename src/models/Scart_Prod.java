@@ -70,6 +70,11 @@ public class Scart_Prod implements Serializable {
     public ShoppingCart getCart() {
         return cart;
     }
+
+    @Override
+    public String toString() {
+        return "Scart_Prod{" + "sPr_id=" + sPr_id + ", pr_qty=" + pr_qty + ", product=" + product + ", cart=" + cart + '}';
+    }
    
     
     

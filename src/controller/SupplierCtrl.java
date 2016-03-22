@@ -22,7 +22,16 @@ public class SupplierCtrl {
         supplierList.add(supp);
         em.persist(supp);
         em.getTransaction().commit();
+        em.close();
+        emf.close();
         return supp;
+        
     }
+
+    public static List<Supplier> getSupplierList() {
+        return supplierList;
+    }
+    
+    
     
 }

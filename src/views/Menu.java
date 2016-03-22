@@ -13,6 +13,7 @@ import java.util.Scanner;
 import models.Product;
 import models.Scart_Prod;
 import models.ShoppingCart;
+import models.Supplier;
 
 /**
  *
@@ -36,7 +37,7 @@ public class Menu {
             }
             firstRun = false;
         }
-
+        controller.ProductCtrl.firstRun();
         do {
             try {
                 System.out.println("Welcome to Shop R US");
@@ -196,8 +197,8 @@ public class Menu {
                         case 4:
                             manageSuppliers();
                         case 5:
-                            
-                           welcome();
+
+                            welcome();
                             break;
 
                     }
@@ -212,8 +213,9 @@ public class Menu {
     }
 
     public static void shopping(models.Users u1) {
-        List<Product> products = new ArrayList();
-        List<ShoppingCart> cart = new ArrayList();
+        List<Product> products = new ArrayList<>();
+        List<ShoppingCart> cart = new ArrayList<>();
+       
         ShoppingCart userCart = null;
         Product productToBuy = null;
         int productID;
@@ -228,10 +230,10 @@ public class Menu {
             in.nextLine();
             switch (choice) {
                 case 1:
-                    controller.ProductCtrl.listAllShelfProduct();
+//                    controller.ProductCtrl.listAllShelfProduct();
                     break;
                 case 2:
-                    controller.ProductCtrl.listAllShelfProduct();
+//                    controller.ProductCtrl.listAllShelfProduct();
                     System.out.println("Please enter product ID you would like to purchase");
                     productID = in.nextInt();
                     in.nextLine();
@@ -280,6 +282,9 @@ public class Menu {
         String descr;
         double price;
         int qtyOnShelf;
+        int supId;
+        Supplier sup = null;
+         List<Supplier> supList = new ArrayList<>();
         try {
             System.out.println("press 1 to list all products");
             System.out.println("Press 2 to add a product");
@@ -292,9 +297,10 @@ public class Menu {
             in.nextLine();
             switch (choice) {
                 case 1:
-                    controller.ProductCtrl.listAllShelfProduct();
+//                    controller.ProductCtrl.listAllShelfProduct();
                     break;
                 case 2:
+                    supList = controller.SupplierCtrl.getSupplierList();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
@@ -305,14 +311,25 @@ public class Menu {
                     in.nextLine();
                     System.out.println("Please enter quantity in stock");
                     qtyOnShelf = in.nextInt();
-                    controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf);
+                    in.nextLine();
+                    System.out.println("Please enter supplier ID");
+                    supId = in.nextInt();
+                    in.nextLine();
+                    for(int i = 0; i < supList.size();i++)
+                    {
+                        if(supList.get(i).getSup_id()==supId)
+                        {
+                            sup = supList.get(i);
+                        }
+                    }
+                    controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf,sup);
                     System.out.println("Product added Thank you");
                     break;
                 case 3:
                     //del product goes here 
                     break;
                 case 4:
-                    controller.ProductCtrl.listAllShelfProduct();
+//                    controller.ProductCtrl.listAllShelfProduct();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
@@ -323,7 +340,7 @@ public class Menu {
                     System.out.println("product : " + pr_id + " with quantity :" + qtyOnShelf + " thank you");
                     break;
                 case 5:
-                    controller.ProductCtrl.listAllShelfProduct();
+//                    controller.ProductCtrl.listAllShelfProduct();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
@@ -371,7 +388,7 @@ public class Menu {
         String companyName;
         String address;
         String phone;
-        
+
         System.out.println("Please enter suplier ID");
         id = in.nextInt();
         in.nextLine();
@@ -381,8 +398,7 @@ public class Menu {
         address = in.nextLine();
         System.out.println("Please enter phone number");
         phone = in.nextLine();
-        
-        
+
         controller.SupplierCtrl.createSupplier(id, companyName, address, phone);
         System.out.println("Supplier added");
     }
