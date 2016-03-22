@@ -12,12 +12,12 @@ import javax.persistence.*;
 
 public class ProductCtrl {
 
-      EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
-    EntityManager em = emf.createEntityManager();
+     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+   static EntityManager em = emf.createEntityManager();
 
-    List<Product> productList = new ArrayList<>();
+    private static List<Product> productList = new ArrayList<>();
 
-    public Product createProduct(int pr_id, String descr, double price, int qtyOnShelf) {
+    public static Product createProduct(int pr_id, String descr, double price, int qtyOnShelf) {
         em.getTransaction().begin();
         Product p = new Product(pr_id, descr, price, qtyOnShelf);
         productList.add(p);
@@ -26,7 +26,7 @@ public class ProductCtrl {
         return p;
     }
 
-    public void listAllShelfProduct() {
+    public static void listAllShelfProduct() {
         for (Product p : productList) {
             p.listProductShelf();
         }
@@ -37,7 +37,7 @@ public class ProductCtrl {
         return (List<Product>) query.getResultList();
     }
 
-    public void updateProdDescr(int pr_id, String newDescr) {
+    public static void updateProdDescr(int pr_id, String newDescr) {
         em.getTransaction().begin();
         Product p = em.find(Product.class, pr_id);
         p.setDescr(newDescr);

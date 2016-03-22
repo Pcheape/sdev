@@ -40,7 +40,7 @@ public class Product implements Serializable {
     private List<Supplier> supList = new ArrayList<>();
 
     //changed OneToOne ,product - scart_prod    
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product")
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY, mappedBy = "product")
     private Scart_Prod owner;
 
     public Product() {

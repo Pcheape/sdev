@@ -21,11 +21,11 @@ public class Scart_Prod implements Serializable {
     private int pr_qty;
 
     //change OneToOne
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name = "PR_ID")
     private Product product;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "cartID")
     private models.ShoppingCart cart;
 
@@ -36,7 +36,7 @@ public class Scart_Prod implements Serializable {
     public Scart_Prod(int pr_qty, Product product, ShoppingCart cart) {
         this.pr_qty = pr_qty;
         this.product = product;
-//        this.cart = cart;
+       this.cart = cart;
     }
 
     public int getsPr_id() {

@@ -18,16 +18,17 @@ public class Menu {
 
     private static Scanner in = new Scanner(System.in);
     private static int choice;
+    
     private static boolean firstRun = true;
 
     public static void welcome() throws models.UserNameExists {
 
         if (firstRun) {
-            
-            try{
-            controller.UserCtrl.firstRun();
-            }catch(models.UserNameExists e){
-                
+
+            try {
+                controller.UserCtrl.firstRun();
+            } catch (models.UserNameExists e) {
+
             }
             firstRun = false;
         }
@@ -94,8 +95,6 @@ public class Menu {
         }
     }
 
-    
-
     public static void login(ArrayList<models.Users> u1) {
 
         String username;
@@ -138,6 +137,10 @@ public class Menu {
                     switch (choice) {
                         case 1:
                             controller.ShopCtrl.printContents(u1.getUserId());
+                            break;
+                        case 2:
+                            shopping();
+                            break;
                         case 3:
                             logout();
                     }
@@ -166,6 +169,7 @@ public class Menu {
                             register("admin");
                             break;
                         case 3:
+                            manageProducts();
                             break;
                         case 4:
                             logout();
@@ -180,6 +184,66 @@ public class Menu {
             } while (choice != 4);
 
         }
+    }
+
+    public static void shopping() {
+        try {
+            System.out.println("Press 1 to list all products");
+            System.out.println("press 2 to logout");
+            choice = in.nextInt();
+            in.nextLine();
+            switch (choice) {
+                case 1:
+                    controller.ProductCtrl.listAllShelfProduct();
+                    break;
+                case 2:
+                    logout();
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid option please try again");
+            choice = 0;
+            in.nextLine();
+        }
+    }
+
+    public static void manageProducts() {
+       int pr_id;
+       String descr;
+       double price;
+       int qtyOnShelf;
+        try {
+            System.out.println("press 1 to list all products");
+            System.out.println("Press 2 to add a product");
+            System.out.println("press 3 to delete a product");
+            System.out.println("press 4 to update shelf quantity");
+            System.out.println("press 5 to update product description");
+
+            choice = in.nextInt();
+            in.nextLine();
+            switch (choice) {
+                case 1:
+                    controller.ProductCtrl.listAllShelfProduct();
+                    break;
+                case 2:
+                    System.out.println("Please enter prodID");
+                    pr_id = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Please enter product description");
+                    descr = in.nextLine();
+                    System.out.println("Please enter product price");
+                    price = in.nextDouble();
+                    in.nextLine();
+                    System.out.println("Please enter quantity in stock");
+                    qtyOnShelf = in.nextInt();
+                    controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf);
+                    System.out.println("Product added Thank you");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid option please try again");
+            choice = 0;
+            in.nextLine();
+        }
+
     }
 
     public static void logout() {
