@@ -44,14 +44,14 @@ public class Product implements Serializable {
     private Scart_Prod owner;
 
     public Product() {
-        owner = new Scart_Prod();
-        shelfMap = new HashMap<>();//*
+//        owner = new Scart_Prod();
+//        shelfMap = new HashMap<>();//*
     }
 
     public Product(int pr_id, String descr, double price, int qtyOnShelf) {
 
-        owner = new Scart_Prod();//product - scart_prod
-        shelfMap = new HashMap<>();//*
+//        owner = new Scart_Prod();//product - scart_prod
+//        shelfMap = new HashMap<>();//*
 
         this.pr_id = pr_id;
         this.descr = descr;
