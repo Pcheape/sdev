@@ -217,6 +217,7 @@ public class Menu {
             System.out.println("press 3 to delete a product");
             System.out.println("press 4 to update shelf quantity");
             System.out.println("press 5 to update product description");
+            System.out.println("press 6 to logout");
 
             choice = in.nextInt();
             in.nextLine();
@@ -237,6 +238,34 @@ public class Menu {
                     qtyOnShelf = in.nextInt();
                     controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf);
                     System.out.println("Product added Thank you");
+                    break;
+                case 3:
+                    //del product goes here 
+                    break;
+                case 4:
+                    controller.ProductCtrl.listAllShelfProduct();
+                    System.out.println("Please enter prodID");
+                    pr_id = in.nextInt();
+                    in.nextLine();
+                     System.out.println("Please enter quantity in stock");
+                    qtyOnShelf = in.nextInt();
+                    
+                    controller.ProductCtrl.updateShelfQty(pr_id, qtyOnShelf);
+                    System.out.println("product : "+pr_id+" with quantity :"+qtyOnShelf+" thank you");
+                    break;
+                case 5: 
+                    controller.ProductCtrl.listAllShelfProduct();
+                    System.out.println("Please enter prodID");
+                    pr_id = in.nextInt();
+                    in.nextLine();
+                    System.out.println("Please enter product description");
+                    descr = in.nextLine();
+                    controller.ProductCtrl.updateProdDescr(pr_id, descr);
+                    System.out.println("product : "+pr_id+" with description :"+descr+" thank you");
+                    break;
+                case 6:
+                    logout();
+                    
             }
         } catch (InputMismatchException e) {
             System.out.println("Invalid option please try again");

@@ -45,7 +45,7 @@ public class ProductCtrl {
 
     }
 
-    public void updateShelfQty(int pr_id, int qtyOnShelf) {
+    public static void updateShelfQty(int pr_id, int qtyOnShelf) {
         em.getTransaction().begin();
         Product p = em.find(Product.class, pr_id);
         p.setQtyOnShelf(qtyOnShelf);
