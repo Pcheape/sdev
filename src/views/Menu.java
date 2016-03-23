@@ -146,15 +146,19 @@ public class Menu {
                             controller.ShopCtrl.printContents(u1.getUserId());
 
                          
-                                System.out.println("Would you like to Buy the products yes or enter to continue shopping");
+                               System.out.println("Press y to purchase anything else to return to shopping");
                                 purchase = in.nextLine().toUpperCase();
                             
-                            if (purchase.equals("YES")) {
+                            if (purchase.equals("Y")) {
                                 cartList = controller.ShopCtrl.getShopCart();
                                 for (int i = 0; i < cartList.size(); i++) {
+                                    
+                                    
                                     if (cartList.get(i).getCart().getCartID() == u1.getUserId()) {
+                                         
 //                                        if (controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty())) {
-                                            controller.ShopCtrl.removeCart(cartList.get(i).getCart());
+                                            controller.ShopCtrl.removeCart(cartList.get(i));
+                                            System.out.println("Products bought thank you for shopping with shop r us");
 //                                        }
                                     }
                                 }

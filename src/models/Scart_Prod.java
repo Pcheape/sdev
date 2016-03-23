@@ -14,6 +14,8 @@ import models.ShoppingCart;
 public class Scart_Prod implements Serializable {
 
    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cartseq")
+    @SequenceGenerator(name = "cartseq", sequenceName = "cartseq", allocationSize = 1)
     @Column(name = "SPR_ID")
     private int sPr_id;
 
@@ -83,7 +85,7 @@ public class Scart_Prod implements Serializable {
     
     @Override
     public String toString() {
-        return "Scart_Prod{" + "sPr_id=" + sPr_id + ", pr_qty=" + pr_qty + ", product=" + product + '}';
+        return "Product :"+product.getDescr()+"Quantity: "+pr_qty+" Price"+(product.getPrice()*pr_qty);
     }
    
     

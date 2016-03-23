@@ -12,6 +12,11 @@ create SEQUENCE userSeq
 start with 3
 INCREMENT BY 1 MAXVALUE 5000 CYCLE;
 
+
+create SEQUENCE cartSeq
+start with 3
+INCREMENT BY 1 MAXVALUE 5000 CYCLE;
+
 CREATE TABLE USERS (
  userID number primary key,
  userName varchar2(255) ,

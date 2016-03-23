@@ -18,7 +18,6 @@ import static javax.persistence.CascadeType.ALL;
 public class ShoppingCart {
 
     @Id
-    
     private int cartID;
 
     @OneToMany(cascade = ALL, mappedBy = "cart")
@@ -56,9 +55,11 @@ public class ShoppingCart {
         return scart_cartList;
     }
 
-    public void removeCart(ShoppingCart cart) {
+    public void removeCart() {
+        
         for (int i = 0; i < scart_cartList.size(); i++) {
-            if (cart.getCartID() == scart_cartList.get(i).getCart().cartID) {
+            
+            if (this.getCartID() == scart_cartList.get(i).getCartID()) {
                 scart_cartList.remove(i);
             }
         }

@@ -55,7 +55,7 @@ public class ShopCtrl {
     public static List<ShoppingCart> findAllCart() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT e FROM Cart e");
+        Query query = em.createQuery("SELECT e FROM ShoppingCart e");
 
         return (List<ShoppingCart>) query.getResultList();
     }
@@ -70,8 +70,7 @@ public class ShopCtrl {
         Scart_Prod c1;
 
         cartList = findAllCarts();
-//        System.out.println("here");
-//        System.out.println("size" + cartList.size());
+
 
         Iterator itr = cartList.iterator();
         while (itr.hasNext()) {
@@ -86,19 +85,35 @@ public class ShopCtrl {
         }
     }
 
-    public static void removeCart(ShoppingCart cart) {
+    public static void removeCart(Scart_Prod cart) {
+        Scart_Prod c1;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        cart.removeCart(cart);
-        em.merge(cart);
+        c1 = em.merge(cart);
+        em.remove(c1);
         em.getTransaction().commit();
         em.close();
         emf.close();
     }
 
     public static ArrayList<Scart_Prod> getShopCart() {
-        return shopCart;
+         Collection<Scart_Prod> cartList;
+        ArrayList<Scart_Prod> carts = new ArrayList<>();
+        Scart_Prod c1;
+
+        cartList = findAllCarts();
+
+
+        Iterator itr = cartList.iterator();
+        while (itr.hasNext()) {
+
+            c1 = (Scart_Prod) itr.next();
+
+            carts.add(c1);
+        }
+        
+        return carts;
     }
 
 }
