@@ -41,11 +41,6 @@ public class ProductCtrl {
         return p;
     }
 
-//    public static void listAllShelfProduct() {
-//        for (Product p : productList) {
-//            p.listProductShelf();
-//        }
-//    }
     public static List<Product> findAllProducts() {
         Query query = em.createQuery("SELECT p FROM Product p");
         return (List<Product>) query.getResultList();
@@ -64,7 +59,7 @@ public class ProductCtrl {
     public static void updateShelfQty(int pr_id, int qtyOnShelf) {
         em.getTransaction().begin();
         Product p = em.find(Product.class, pr_id);
-//        p.setQtyOnShelf(qtyOnShelf);
+
         em.getTransaction().commit();
         em.close();
         emf.close();
@@ -91,32 +86,42 @@ public class ProductCtrl {
 
         }
     }
+    
+    public static void deleteProduct(int prodId)
+    {
+        
+          Collection<Product> prodsCol;
+        Product products = null;
+        List<Product> prodList = new ArrayList<>();
+        Product prodToDelete;
 
-//    public static boolean deductFromShelf(int pr_id, int qty) {
-//        boolean output = false;
-//        em.getTransaction().begin();
-//        Product p = em.find(Product.class, pr_id);
-//        if (p.getQtyOnShelf() > qty) {
-//            updateShelfQty(pr_id, (p.getQtyOnShelf() - qty));
-//            System.out.println("OK");
-//            output = true;
-//
-//        } else {
-//            System.out.println("Sorry, quantity on shelf is: " + p.getQtyOnShelf());
-//        }
-//        em.getTransaction().commit();
-//        em.close();
-//        emf.close();
-//        return output;
-//        
-//    }
-//    public void addToShelf(int pr_id, int qty) {
-//        em.getTransaction().begin();
-//        Product p = em.find(Product.class, pr_id);
-//        updateShelfQty(pr_id, (p.getQtyOnShelf() + qty));
-//        em.getTransaction().commit();
-//        em.close();
-//        emf.close();
-//    }
+        prodsCol = findAllProducts();
+
+        Iterator itr = prodsCol.iterator();
+        while (itr.hasNext()) {
+
+            products = (Product) itr.next();
+
+            prodList.add(products);
+        }
+        
+            
+            for(int i = 0; i < prodList.size();i++)
+            {
+                if(prodList.get(i).getPr_id()==prodId)
+                {
+                    products = prodList.get(i);
+                }
+            }
+        em.getTransaction().begin();
+        
+        prodToDelete = em.merge(products);
+        em.remove(prodToDelete);
+        em.getTransaction().commit();
+       
+
+    }
+
+
     
 }

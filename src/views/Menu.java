@@ -333,6 +333,7 @@ public class Menu {
         int supId;
         Supplier sup = null;
         List<Supplier> supList = new ArrayList<>();
+        List<Product> prodList = new ArrayList<>();
         try {
             System.out.println("press 1 to list all products");
             System.out.println("Press 2 to add a product");
@@ -372,7 +373,11 @@ public class Menu {
                     System.out.println("Product added Thank you");
                     break;
                 case 3:
-                    //del product goes here 
+                    controller.ProductCtrl.PrintProducts();
+                    System.out.println("Please enter id of the product you wish to delete");
+                    choice = in.nextInt();
+                    in.nextLine();
+                    controller.ProductCtrl.deleteProduct(choice);
                     break;
                 case 4:
 //                    controller.ProductCtrl.listAllShelfProduct();
