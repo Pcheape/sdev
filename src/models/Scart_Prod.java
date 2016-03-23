@@ -83,7 +83,7 @@ public class Scart_Prod implements Serializable {
     
     @Override
     public String toString() {
-        return "Scart_Prod{" + "sPr_id=" + sPr_id + ", pr_qty=" + pr_qty + ", product=" + product + ", cart=" + cart + '}';
+        return "Scart_Prod{" + "sPr_id=" + sPr_id + ", pr_qty=" + pr_qty + ", product=" + product + '}';
     }
    
     

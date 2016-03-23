@@ -286,7 +286,7 @@ public class Menu {
                     quantity = in.nextInt();
 
                     products = controller.ProductCtrl.findAllProducts();
-                    cart = controller.ShopCtrl.findAllCarts();
+                    cart = controller.ShopCtrl.findAllCart();
 
                     for (int i = 0; i < cart.size(); i++) {
                         if (u1.getUserId() == cart.get(i).getCartID()) {
