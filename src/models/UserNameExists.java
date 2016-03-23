@@ -7,7 +7,7 @@ package models;
 
 /**
  *
- * @author cytex
+ * @author Phillip cheape x00123757
  */
 public class UserNameExists extends Exception{
     

@@ -16,7 +16,7 @@ import models.Users;
 
 /**
  *
- * @author cytex
+ * @author Phillip cheape x00123757
  */
 public class UserCtrl {
 

@@ -11,7 +11,7 @@ import static javax.persistence.CascadeType.ALL;
 
 /**
  *
- * @author cytex
+ * @author Phillip cheape x00123757
  */
 @Entity
 @Table(name = "CART")

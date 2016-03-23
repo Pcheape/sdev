@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 /**
  *
- * @author cytex
+ * @author Phillip cheape x00123757
  */
 @Entity
 @Table(name = "USERS")
