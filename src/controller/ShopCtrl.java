@@ -53,25 +53,27 @@ public class ShopCtrl {
         
         return (List<ShoppingCart>) query.getResultList();
     }
+      
+   
       public static void updateTotalPrice(ShoppingCart cart, double price)
       {
           cart.setTotalPrice(price);
       }
+      
+      
     
     public static void printContents(int userId)
     {
-        ArrayList<Scart_Prod> cartSearch = new ArrayList<>();
-        for(int i = 0; i <cartSearch.size();i++)
-        {
-            if(cartSearch.get(i).getCart().getCartID()== userId )
-            {
-            System.out.println(cartSearch.get(i));
-            }
-            else 
-            {
-                System.out.println("Cart not found");
-            }
-        }
+        List<Scart_Prod> cartList;
+        cartList = models.ShoppingCart.getScart_cartList();
+        System.out.println("size"+cartList.size());
+//        for(int i = 0 ; i < cartList.size();i++)
+//        {
+//            if(cartList.get(i).getCartID() == userId)
+//            {
+//            System.out.println(cartList.get(i));
+//            }
+//        }
     }
     
     

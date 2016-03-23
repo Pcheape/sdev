@@ -65,38 +65,38 @@ public class ProductCtrl {
     public static void updateShelfQty(int pr_id, int qtyOnShelf) {
         em.getTransaction().begin();
         Product p = em.find(Product.class, pr_id);
-        p.setQtyOnShelf(qtyOnShelf);
+//        p.setQtyOnShelf(qtyOnShelf);
         em.getTransaction().commit();
         em.close();
         emf.close();
 
     }
 
-    public static boolean deductFromShelf(int pr_id, int qty) {
-        boolean output = false;
-        em.getTransaction().begin();
-        Product p = em.find(Product.class, pr_id);
-        if (p.getQtyOnShelf() > qty) {
-            updateShelfQty(pr_id, (p.getQtyOnShelf() - qty));
-            System.out.println("OK");
-            output = true;
+//    public static boolean deductFromShelf(int pr_id, int qty) {
+//        boolean output = false;
+//        em.getTransaction().begin();
+//        Product p = em.find(Product.class, pr_id);
+//        if (p.getQtyOnShelf() > qty) {
+//            updateShelfQty(pr_id, (p.getQtyOnShelf() - qty));
+//            System.out.println("OK");
+//            output = true;
+//
+//        } else {
+//            System.out.println("Sorry, quantity on shelf is: " + p.getQtyOnShelf());
+//        }
+//        em.getTransaction().commit();
+//        em.close();
+//        emf.close();
+//        return output;
+//        
+//    }
 
-        } else {
-            System.out.println("Sorry, quantity on shelf is: " + p.getQtyOnShelf());
-        }
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
-        return output;
-        
-    }
-
-    public void addToShelf(int pr_id, int qty) {
-        em.getTransaction().begin();
-        Product p = em.find(Product.class, pr_id);
-        updateShelfQty(pr_id, (p.getQtyOnShelf() + qty));
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
-    }
+//    public void addToShelf(int pr_id, int qty) {
+//        em.getTransaction().begin();
+//        Product p = em.find(Product.class, pr_id);
+//        updateShelfQty(pr_id, (p.getQtyOnShelf() + qty));
+//        em.getTransaction().commit();
+//        em.close();
+//        emf.close();
+//    }
 }

@@ -28,6 +28,9 @@ public class Scart_Prod implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "cartID")
     private models.ShoppingCart cart;
+    
+   @Transient
+    int cartID;
 
     public Scart_Prod() {
 
@@ -37,6 +40,7 @@ public class Scart_Prod implements Serializable {
         this.pr_qty = pr_qty;
         this.product = product;
        this.cart = cart;
+       this.cartID = cart.getCartID();
     }
 
     public int getsPr_id() {
@@ -71,6 +75,12 @@ public class Scart_Prod implements Serializable {
         return cart;
     }
 
+    public int getCartID() {
+        return cartID;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Scart_Prod{" + "sPr_id=" + sPr_id + ", pr_qty=" + pr_qty + ", product=" + product + ", cart=" + cart + '}';

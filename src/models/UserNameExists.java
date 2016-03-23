@@ -13,7 +13,7 @@ public class UserNameExists extends Exception{
     
     public UserNameExists()
     {
-        super("sorry user name is taken plese insert new username");
+        super("sorry user name is taken please insert new username");
     }
     
 }

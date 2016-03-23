@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import org.eclipse.persistence.jpa.config.Cascade;
 
 /**
  *
@@ -19,6 +20,7 @@ import javax.persistence.*;
 @Table(name = "USERS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type")
+
 public class Users implements Serializable {
 
     @Id

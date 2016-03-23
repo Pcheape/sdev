@@ -18,6 +18,7 @@ import static javax.persistence.CascadeType.ALL;
 public class ShoppingCart {
 
     @Id
+    
     private int cartID;
 
     @OneToMany(cascade = ALL, mappedBy = "cart")

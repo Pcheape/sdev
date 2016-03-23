@@ -32,8 +32,8 @@ public class Product implements Serializable {
 //    @MapKeyColumn(name = "SHELFNUM")
 //    private Map<String, Product> shelfMap;
 
-    @Column(name = "QTYONSHELF")
-    private int qtyOnShelf;
+//    @Column(name = "QTYONSHELF")
+//    private int qtyOnShelf;
 
     //product-supplier
     @ManyToMany(mappedBy = "prodList")
@@ -56,7 +56,7 @@ public class Product implements Serializable {
         this.pr_id = pr_id;
         this.descr = descr;
         this.price = price;
-        this.qtyOnShelf = qtyOnShelf;
+//        this.qtyOnShelf = qtyOnShelf;
         this.supList.add(sup);
     }
     
@@ -91,13 +91,13 @@ public class Product implements Serializable {
     }
     //***
 
-    public int getQtyOnShelf() {
-        return qtyOnShelf;
-    }
+//    public int getQtyOnShelf() {
+//        return qtyOnShelf;
+//    }
 
-    public void setQtyOnShelf(int qtyOnShelf) {
-        this.qtyOnShelf = qtyOnShelf;
-    }
+//    public void setQtyOnShelf(int qtyOnShelf) {
+//        this.qtyOnShelf = qtyOnShelf;
+//    }
 
     public Scart_Prod getOwner() {
         return owner;

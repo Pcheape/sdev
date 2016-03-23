@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.*;
+import models.Customer;
 //import models.ShoppingCart;
 import models.Users;
 
@@ -123,4 +124,45 @@ public class UserCtrl {
         System.out.println(existingUsers);
     }
 
+    public static void ChangePassword(Users u1,String password)
+    {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+         EntityManager em = emf.createEntityManager();   
+         em.getTransaction().begin();
+         u1.setPassword(password);
+         em.merge(u1);
+         em.getTransaction().commit();
+         em.close();
+         emf.close();
+         
+        
+    }
+    
+    public static void RemoveUser(int id)
+    {
+        Customer removeUser;
+         
+         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SdevCAPU");
+         EntityManager em = emf.createEntityManager();   
+         em.getTransaction().begin();
+         for(int i = 0; i < users.size();i++)
+         {
+             if(users.get(i).getUserId() == id)
+             { 
+                removeUser = (Customer)em.merge(users.get(i));
+                 em.remove(removeUser);
+                 users.remove(i);
+                 
+                 
+                  em.getTransaction().commit();
+             }
+             else 
+             {
+                 System.out.println("ID does not exist");
+             }
+         }
+         
+         em.close();
+         emf.close();
+    }
 }

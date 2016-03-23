@@ -14,6 +14,7 @@ import models.Product;
 import models.Scart_Prod;
 import models.ShoppingCart;
 import models.Supplier;
+import models.Users;
 
 /**
  *
@@ -144,17 +145,17 @@ public class Menu {
                         case 1:
                             controller.ShopCtrl.printContents(u1.getUserId());
 
-                            do {
+                         
                                 System.out.println("Would you like to Buy the products yes or enter to continue shopping");
                                 purchase = in.nextLine().toUpperCase();
-                            } while ((!purchase.equals("YES")));
+                            
                             if (purchase.equals("YES")) {
                                 cartList = controller.ShopCtrl.getShopCart();
                                 for (int i = 0; i < cartList.size(); i++) {
                                     if (cartList.get(i).getCart().getCartID() == u1.getUserId()) {
-                                        if (controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty())) {
+//                                        if (controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty())) {
                                             controller.ShopCtrl.removeCart(cartList.get(i).getCart());
-                                        }
+//                                        }
                                     }
                                 }
                             }
@@ -179,8 +180,9 @@ public class Menu {
                     System.out.println("Press 1 to view all User accounts");
                     System.out.println("Press 2 to add a admin");
                     System.out.println("press 3 to manage products");
-                    System.out.println("Press 4 to manage suppliers");
-                    System.out.println("Press 5 to go logout");
+                    System.out.println("Press 4 to manage users");
+                    System.out.println("Press 5 to manage suppliers");
+                    System.out.println("Press 6 to go logout");
                     choice = in.nextInt();
                     in.nextLine();
 
@@ -195,8 +197,10 @@ public class Menu {
                             manageProducts();
                             break;
                         case 4:
-                            manageSuppliers();
+                            manageUsers(u1);
                         case 5:
+                            manageSuppliers();
+                        case 6:
 
                             welcome();
                             break;
@@ -212,10 +216,51 @@ public class Menu {
         }
     }
 
+    public static void manageUsers(models.Users u1) {
+        String password;
+        String userName;
+        List<models.Users> userList = new ArrayList<>();
+        userList = controller.UserCtrl.getUsers();
+        try {
+            System.out.println("Press 1 to add a Customer");
+            System.out.println("Press 2 to reset Customer password");
+            System.out.println("Press 3 to go back");
+            
+            choice = in.nextInt();
+            in.nextLine();
+            switch (choice) {
+                case 1:
+                    register("customer");
+                    break;
+                case 2:
+
+                    System.out.println("please enter user name that you wish to change password of");
+                    userName = in.nextLine().toLowerCase();
+                    System.out.println("Please enter new password");
+                    password = in.nextLine();
+
+                    for (int i =0 ; i < userList.size();i++) {
+                        if (userName.equals(userList.get(i).getUserName().toLowerCase())) {
+                            controller.UserCtrl.ChangePassword(userList.get(i), password);
+                        }
+                    }
+                break;
+                case 3:
+                    break;
+               
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid option please try again");
+            choice = 0;
+            in.nextLine();
+        }
+    }
+
     public static void shopping(models.Users u1) {
         List<Product> products = new ArrayList<>();
         List<ShoppingCart> cart = new ArrayList<>();
-       
+
         ShoppingCart userCart = null;
         Product productToBuy = null;
         int productID;
@@ -284,7 +329,7 @@ public class Menu {
         int qtyOnShelf;
         int supId;
         Supplier sup = null;
-         List<Supplier> supList = new ArrayList<>();
+        List<Supplier> supList = new ArrayList<>();
         try {
             System.out.println("press 1 to list all products");
             System.out.println("Press 2 to add a product");
@@ -315,14 +360,12 @@ public class Menu {
                     System.out.println("Please enter supplier ID");
                     supId = in.nextInt();
                     in.nextLine();
-                    for(int i = 0; i < supList.size();i++)
-                    {
-                        if(supList.get(i).getSup_id()==supId)
-                        {
+                    for (int i = 0; i < supList.size(); i++) {
+                        if (supList.get(i).getSup_id() == supId) {
                             sup = supList.get(i);
                         }
                     }
-                    controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf,sup);
+                    controller.ProductCtrl.createProduct(pr_id, descr, price, qtyOnShelf, sup);
                     System.out.println("Product added Thank you");
                     break;
                 case 3:
