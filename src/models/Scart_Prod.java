@@ -85,7 +85,12 @@ public class Scart_Prod implements Serializable {
     
     @Override
     public String toString() {
-        return "Product :"+product.getDescr()+"Quantity: "+pr_qty+" Price"+(product.getPrice()*pr_qty);
+        String output;
+        
+       output = "Product : "+product.getDescr()+"Quantity: "+pr_qty+" Price "+(product.getPrice()*pr_qty);
+      
+       
+       return output;
     }
    
     

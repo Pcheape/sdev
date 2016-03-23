@@ -23,7 +23,7 @@ public class ShoppingCart {
     @OneToMany(cascade = ALL, mappedBy = "cart")
     private static List<Scart_Prod> scart_cartList;
 
-    private double totalPrice;
+
 
     public ShoppingCart() {
 
@@ -31,20 +31,8 @@ public class ShoppingCart {
 
     public ShoppingCart(Users u1) {
         this.cartID = u1.getUserId();
-        this.totalPrice = 0.0;
+      
 
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice += totalPrice;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void clearTotalPrice() {
-        this.totalPrice = 0;
     }
 
     public int getCartID() {

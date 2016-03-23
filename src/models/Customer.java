@@ -34,8 +34,10 @@ public class Customer extends Users  {
 
     @Override
     public String toString() {
-        super.toString();
-        return "Customer{" + "name=" + name + ", address=" + address + '}';
+        String output;
+        output = super.toString();
+        output +=  "name=" + name + ", address=" + address ;
+        return output;
     }
     
     

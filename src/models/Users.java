@@ -74,7 +74,7 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         String output;
-        output = String.format("Users{" + "UserId=" + UserId + ", userName=" + userName + ", password=" + password + '}'+"\n");
+        output = String.format("UserId= " + UserId + ", userName= " + userName + ", password= " + password );
         return output;
     }
 

@@ -309,10 +309,9 @@ public class Menu {
                     if (productFound == false) {
                         System.out.println("Sorry Product " + productID + " not Available please try again");
                     } else {
-                        System.out.println("adding prod to cart");
+                        
                         controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
-                        System.out.println("product added");
-                        controller.ShopCtrl.updateTotalPrice(userCart, (productToBuy.getPrice() * quantity));
+                       
                         System.out.println("Product added Please purchase at purchase menu thank you for your custom");
                     }
 

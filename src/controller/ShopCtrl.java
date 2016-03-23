@@ -60,9 +60,7 @@ public class ShopCtrl {
         return (List<ShoppingCart>) query.getResultList();
     }
 
-    public static void updateTotalPrice(ShoppingCart cart, double price) {
-        cart.setTotalPrice(price);
-    }
+    
 
     public static void printContents(int userId) {
         Collection<Scart_Prod> cartList;
