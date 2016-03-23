@@ -31,13 +31,13 @@ public class ProductCtrl {
         }
     }
 
-    public static Product createProduct(int pr_id, String descr, double price, int qtyOnShelf,Supplier sup) {
+    public static Product createProduct(int pr_id, String descr, double price, int qtyOnShelf, Supplier sup) {
         em.getTransaction().begin();
         Product p = new Product(pr_id, descr, price, qtyOnShelf, sup);
         productList.add(p);
         em.persist(p);
         em.getTransaction().commit();
-       
+
         return p;
     }
 
@@ -46,7 +46,6 @@ public class ProductCtrl {
 //            p.listProductShelf();
 //        }
 //    }
-
     public static List<Product> findAllProducts() {
         Query query = em.createQuery("SELECT p FROM Product p");
         return (List<Product>) query.getResultList();
@@ -72,6 +71,27 @@ public class ProductCtrl {
 
     }
 
+    public static void PrintProducts() {
+        Collection<Product> prodsCol;
+        Product products;
+        List<Product> prodList = new ArrayList<>();
+
+        prodsCol = findAllProducts();
+
+        Iterator itr = prodsCol.iterator();
+        while (itr.hasNext()) {
+
+            products = (Product) itr.next();
+
+            prodList.add(products);
+
+            for (int i = 0; i < prodList.size(); i++) {
+                System.out.println(prodList.get(i));
+            }
+
+        }
+    }
+
 //    public static boolean deductFromShelf(int pr_id, int qty) {
 //        boolean output = false;
 //        em.getTransaction().begin();
@@ -90,7 +110,6 @@ public class ProductCtrl {
 //        return output;
 //        
 //    }
-
 //    public void addToShelf(int pr_id, int qty) {
 //        em.getTransaction().begin();
 //        Product p = em.find(Product.class, pr_id);
@@ -99,4 +118,5 @@ public class ProductCtrl {
 //        em.close();
 //        emf.close();
 //    }
+    
 }

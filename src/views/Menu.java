@@ -279,10 +279,10 @@ public class Menu {
             in.nextLine();
             switch (choice) {
                 case 1:
-//                    controller.ProductCtrl.listAllShelfProduct();
+               controller.ProductCtrl.PrintProducts();
                     break;
                 case 2:
-//                    controller.ProductCtrl.listAllShelfProduct();
+                 controller.ProductCtrl.PrintProducts();
                     System.out.println("Please enter product ID you would like to purchase");
                     productID = in.nextInt();
                     in.nextLine();
@@ -345,7 +345,7 @@ public class Menu {
             in.nextLine();
             switch (choice) {
                 case 1:
-//                    controller.ProductCtrl.listAllShelfProduct();
+                    controller.ProductCtrl.PrintProducts();
                     break;
                 case 2:
                     supList = controller.SupplierCtrl.getSupplierList();
