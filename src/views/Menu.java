@@ -18,7 +18,7 @@ import models.Users;
 
 /**
  *
- * @author cytex
+ * @author Phillip cheape x00123757
  */
 public class Menu {
 
@@ -145,21 +145,19 @@ public class Menu {
                         case 1:
                             controller.ShopCtrl.printContents(u1.getUserId());
 
-                         
-                               System.out.println("Press y to purchase anything else to return to shopping");
-                                purchase = in.nextLine().toUpperCase();
-                            
+                            System.out.println("Press y to purchase anything else to return to shopping");
+                            purchase = in.nextLine().toUpperCase();
+
                             if (purchase.equals("Y")) {
                                 cartList = controller.ShopCtrl.getShopCart();
                                 for (int i = 0; i < cartList.size(); i++) {
-                                    
-                                    
+
                                     if (cartList.get(i).getCart().getCartID() == u1.getUserId()) {
-                                         
-//                                        if (controller.ProductCtrl.deductFromShelf(cartList.get(i).getsPr_id(), cartList.get(i).getPr_qty())) {
-                                            controller.ShopCtrl.removeCart(cartList.get(i));
-                                            System.out.println("Products bought thank you for shopping with shop r us");
-//                                        }
+
+                                      
+                                        controller.ShopCtrl.removeCart(cartList.get(i));
+                                        System.out.println("Products bought thank you for shopping with shop r us");
+                                       
                                     }
                                 }
                             }
@@ -229,7 +227,7 @@ public class Menu {
             System.out.println("Press 1 to add a Customer");
             System.out.println("Press 2 to reset Customer password");
             System.out.println("Press 3 to go back");
-            
+
             choice = in.nextInt();
             in.nextLine();
             switch (choice) {
@@ -243,15 +241,15 @@ public class Menu {
                     System.out.println("Please enter new password");
                     password = in.nextLine();
 
-                    for (int i =0 ; i < userList.size();i++) {
+                    for (int i = 0; i < userList.size(); i++) {
                         if (userName.equals(userList.get(i).getUserName().toLowerCase())) {
                             controller.UserCtrl.ChangePassword(userList.get(i), password);
                         }
                     }
-                break;
+                    break;
                 case 3:
                     break;
-               
+
             }
 
         } catch (InputMismatchException e) {
@@ -279,10 +277,10 @@ public class Menu {
             in.nextLine();
             switch (choice) {
                 case 1:
-               controller.ProductCtrl.PrintProducts();
+                    controller.ProductCtrl.PrintProducts();
                     break;
                 case 2:
-                 controller.ProductCtrl.PrintProducts();
+                    controller.ProductCtrl.PrintProducts();
                     System.out.println("Please enter product ID you would like to purchase");
                     productID = in.nextInt();
                     in.nextLine();
@@ -309,9 +307,9 @@ public class Menu {
                     if (productFound == false) {
                         System.out.println("Sorry Product " + productID + " not Available please try again");
                     } else {
-                        
+
                         controller.ShopCtrl.addProductCart(productToBuy, quantity, userCart);
-                       
+
                         System.out.println("Product added Please purchase at purchase menu thank you for your custom");
                     }
 
@@ -333,7 +331,7 @@ public class Menu {
         int supId;
         Supplier sup = null;
         List<Supplier> supList = new ArrayList<>();
-        List<Product> prodList = new ArrayList<>();
+        
         try {
             System.out.println("press 1 to list all products");
             System.out.println("Press 2 to add a product");
@@ -380,7 +378,7 @@ public class Menu {
                     controller.ProductCtrl.deleteProduct(choice);
                     break;
                 case 4:
-//                    controller.ProductCtrl.listAllShelfProduct();
+                    controller.ProductCtrl.PrintProducts();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
@@ -391,7 +389,7 @@ public class Menu {
                     System.out.println("product : " + pr_id + " with quantity :" + qtyOnShelf + " thank you");
                     break;
                 case 5:
-//                    controller.ProductCtrl.listAllShelfProduct();
+                    controller.ProductCtrl.PrintProducts();
                     System.out.println("Please enter prodID");
                     pr_id = in.nextInt();
                     in.nextLine();
@@ -415,7 +413,6 @@ public class Menu {
     public static void manageSuppliers() {
         try {
             System.out.println("Press 1 to add a supplier");
-            System.out.println("Press 2 to remove a supplier");
             System.out.println("Press 3 to go back");
             choice = in.nextInt();
             in.nextLine();
@@ -423,7 +420,7 @@ public class Menu {
             switch (choice) {
                 case 1:
                     addSupplier();
-                case 3:
+                case 2:
                     break;
 
             }
